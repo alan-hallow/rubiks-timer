@@ -1,0 +1,68 @@
+# Node modules
+backend/node_modules/
+frontend/node_modules/
+
+# Build output
+frontend/dist/
+frontend/build/
+frontend/out/
+frontend/.next/
+frontend/app/out/
+frontend/app/build/
+
+# Environment variables
+*.env
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Temporary files
+tmp/
+temp/
+.cache/
+*.tmp
+
+# IDE and editor specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# Coverage directory used by tools like istanbul
+frontend/coverage/
+
+# Miscellaneous
+*.tgz
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# Ignore specific files and directories
+frontend/app/.next/
+frontend/app/out/
+frontend/app/build/
+frontend/app/.env.local
+frontend/app/.env.development.local
+frontend/app/.env.test.local
+frontend/app/.env.production.local
+
+# Ignore test and example files
+**/__tests__/
+**/examples/
+**/test/
+**/tests/
