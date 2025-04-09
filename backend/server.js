@@ -40,7 +40,7 @@ app.post("/api/times", async (req, res) => {
 app.get("/api/times", async (_, res) => {
   try {
     const result = await pool.query(
-      "SELECT * FROM times ORDER BY created_at DESC"
+      "SELECT * FROM times ORDER BY created_at DESC LIMIT 20"
     );
     res.status(200).json(result.rows);
   } catch (err) {

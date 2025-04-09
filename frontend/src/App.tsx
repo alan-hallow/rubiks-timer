@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import Scramble from "./components/scramble";
+import Scramble from "./components/Scramble";
+import SavedTimes from "./components/SavedTimes";
 
 function App() {
+  const [refresh, setRefresh] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [phase, setPhase] = useState<"idle" | "inspecting" | "timing" | "done">(
     "idle"
@@ -27,6 +29,7 @@ function App() {
 
       const data = await res.json();
       console.log("Time saved:", data);
+      setRefresh((prev) => !prev);
     } catch (err) {
       console.error("Failed to save time:", err);
     }
@@ -116,15 +119,22 @@ function App() {
 
   return (
     <div className="wholeBody">
-      {phase === "done" && <Scramble />}
-      {phase === "idle" && <p>0:000</p>}
-      {phase === "timing" && <p>{seconds}</p>}
-      {phase === "done" && (
-        <p>
-          {seconds}:{milliseconds.toString().padStart(3, "0")}
-        </p>
-      )}
-      {phase === "inspecting" && <p>{inspectionTimeLeft}</p>}
+      <div className="timingAndSavedTimes">
+        <div className="timingWhole">
+          {phase === "done" && <Scramble />}
+          {phase === "idle" && <p>0:000</p>}
+          {phase === "timing" && <p>{seconds}</p>}
+          {phase === "done" && (
+            <p>
+              {seconds}:{milliseconds.toString().padStart(3, "0")}
+            </p>
+          )}
+          {phase === "inspecting" && <p>{inspectionTimeLeft}</p>}
+        </div>
+        <div className="savedTimesWhole">
+          <SavedTimes refresh={refresh}/>
+        </div>
+      </div>
     </div>
   );
 }

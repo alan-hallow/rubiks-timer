@@ -50,3 +50,41 @@ p {
   font-size: 2rem;
   text-align: center;
 }
+
+.timingAndSavedTimes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timingWhole {
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.savedTimesWhole {
+  background-color: #1a1a1a;
+  width: 20vw;
+  height: 100vh;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  border-left: 2px solid #555555;
+  overflow-y: auto;
+}
+
+.savedTimesList {
+  font-size: .9rem;
+  padding: 6px 20px;
+  margin: 0 30%;
+  width: 100%;
+}
+
+.savedTimesList:nth-child(odd) {
+  background-color: #000;
+  border-radius: 5px;
+}

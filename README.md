@@ -3,11 +3,11 @@ This is a Rubik's Cube Timer App I am building using Node.js with Express, React
 
 Things to do:
 
-- [ ] Get it start and learn the basics
-- [ ] Make the timer work accurately
-- [ ] Get the scramble working
-- [ ] Connect the database to backend
-- [ ] Get the storage working in the database
+- [x] Get it start and learn the basics
+- [x] Make the timer work accurately
+- [x] Get the scramble working
+- [x] Connect the database to backend
+- [x] Get the storage working in the database
 - [ ] Get the local storage working
 - [ ] Add support for multiple cubes
 - [ ] Add support for storing solves too
