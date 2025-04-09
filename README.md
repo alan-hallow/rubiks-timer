@@ -8,6 +8,7 @@ Things to do:
 - [x] Get the scramble working
 - [x] Connect the database to backend
 - [x] Get the storage working in the database
+- [ ] Add Averages for the times
 - [ ] Get the local storage working
 - [ ] Add support for multiple cubes
 - [ ] Add support for storing solves too

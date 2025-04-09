@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import Scramble from "./components/Scramble";
 import SavedTimes from "./components/SavedTimes";
+import Average from "./components/Average";
 
 function App() {
+  const [savedTimes, setSavedTimes] = useState<number[]>([]);
   const [refresh, setRefresh] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [phase, setPhase] = useState<"idle" | "inspecting" | "timing" | "done">(
@@ -130,7 +132,9 @@ function App() {
             </p>
           )}
           {phase === "inspecting" && <p>{inspectionTimeLeft}</p>}
+          <Average times={savedTimes} />
         </div>
+        
         <div className="savedTimesWhole">
           <SavedTimes refresh={refresh}/>
         </div>

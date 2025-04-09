@@ -1,7 +1,8 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
 
-function SavedTimes({ refresh }:{ refresh: boolean}) {
+import React, { useState, useEffect } from 'react';
+import Average from './Average';
+
+function SavedTimes({ refresh }: { refresh: boolean }) {
   const [savedTimes, setSavedTimes] = useState<number[]>([]);
 
   useEffect(() => {
@@ -20,12 +21,14 @@ function SavedTimes({ refresh }:{ refresh: boolean}) {
 
   return (
     <div>
+      <Average times={savedTimes} />
       <h2>Saved Times</h2>
-      {savedTimes.map((t,i) =>(
+      {savedTimes.map((t, i) => (
         <p key={i} className="savedTimesList">{(t / 1000).toFixed(3)}s</p>
       ))}
+
     </div>
-  )
+  );
 }
 
 export default SavedTimes;
