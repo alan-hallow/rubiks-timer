@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 function Timer() {
   const startTimeRef = useRef(0);
-  const intervalRef = useRef(null);
+  const intervalRef = useRef(0);
 
   const [mode, setMode] = useState("idle");
   const modeRef = useRef("idle");
@@ -38,7 +38,7 @@ function Timer() {
     if (!intervalRef.current) return;
 
     clearInterval(intervalRef.current);
-    intervalRef.current = null;
+    intervalRef.current = 0;
     console.log("Timer stopped");
     // setIsRunning(false);
     modeRef.current = "idle";
@@ -76,6 +76,7 @@ function Timer() {
         00:{seconds.toString().padStart(2, "0")}:
         {milliseconds.toString().padStart(3, "0")}
       </h1>
+      <p>Mode: {mode}</p>
       <p>endInspection: {endInspectionTime}</p>
       <button onClick={inspectionStart}>Start Inspection</button>
       <button onClick={startTimer}>Start Timer</button>

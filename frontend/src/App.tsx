@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect } from "react";
-import Scramble from "./components/Scramble";
+// import { useState, useRef, useEffect } from "react";
+// import Scramble from "./components/Scramble";
 import SavedTimes from "./components/SavedTimes";
-import Average from "./components/Average";
+// import Average from "./components/Average";
 import Timer from "./components/Timer";
 
 function App() {
-  const [savedTimes, setSavedTimes] = useState<number[]>([]);
-  const [refresh, setRefresh] = useState(false);
-  // const [timeElapsed, setTimeElapsed] = useState(0);
-  const [phase, setPhase] = useState<"idle" | "inspecting" | "timing" | "done">(
-    "idle"
-  );
+  // const [savedTimes, setSavedTimes] = useState<number[]>([]);
+  // const [refresh, setRefresh] = useState(false);
+  // // const [timeElapsed, setTimeElapsed] = useState(0);
+  // const [phase, setPhase] = useState<"idle" | "inspecting" | "timing" | "done">(
+  //   "idle"
+  // );
   // const [inspectionTimeLeft, setInspectionTimeLeft] = useState(15);
 
   // const intervalRef = useRef<number | null>(null);
@@ -18,25 +18,25 @@ function App() {
   // const inspectionStartRef = useRef<number | null>(null);
   // const inspectionIntervalRef = useRef<number | null>(null);
 
-  async function saveTime(time: number) {
-    console.log("Sending time:", time);
+  // async function saveTime(time: number) {
+  //   console.log("Sending time:", time);
 
-    try {
-      const res = await fetch("http://localhost:5000/api/times", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ time }),
-      });
+  //   try {
+  //     const res = await fetch("http://localhost:5000/api/times", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ time }),
+  //     });
 
-      const data = await res.json();
-      console.log("Time saved:", data);
-      setRefresh((prev) => !prev);
-    } catch (err) {
-      console.error("Failed to save time:", err);
-    }
-  }
+  //     const data = await res.json();
+  //     console.log("Time saved:", data);
+  //     setRefresh((prev) => !prev);
+  //   } catch (err) {
+  //     console.error("Failed to save time:", err);
+  //   }
+  // }
 
   console.log(
     "%c😎",
@@ -123,13 +123,13 @@ function App() {
 
   // const seconds = Math.floor(timeElapsed / 1000);
   // const milliseconds = timeElapsed % 1000;
-
+  const refreshed = false//remove this code after done
   return (
     <div className="wholeBody">
       <div className="timingAndSavedTimes">
         <div className="timingWhole">
-          {phase === "done" && <Scramble />}
-          <Timer />
+          {/* {phase === "done" && <Scramble />} */}
+          <Timer/>
           {/* {phase === "idle" && <p className="timer inspectionTimer">0:000</p>}
           {phase === "timing" && <p className="timer mainTimer">{seconds}</p>}
           {phase === "done" && (
@@ -142,7 +142,7 @@ function App() {
         </div>
 
         <div className="savedTimesWhole">
-          <SavedTimes refresh={refresh} />
+          <SavedTimes refresh={refreshed} />
         </div>
       </div>
     </div>
