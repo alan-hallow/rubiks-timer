@@ -4,8 +4,8 @@ This is a Rubik's Cube Timer App I am building using Node.js with Express, React
 Things to do:
 
 - [x] Get it start and learn the basics
-- [x] Make the timer work accurately
-- [x] Get the scramble working
+- [ ] Make the timer work accurately
+- [ ] Get the scramble working
 - [x] Connect the database to backend
 - [x] Get the storage working in the database
 - [ ] Add Averages for the times

@@ -3,8 +3,8 @@ body {
   font-family: JetBrains Mono;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #111111;
-  color: #fff;
+  background-color: #f2f0e3;
+  color: #000;
 }
 
 code {
@@ -30,12 +30,13 @@ code {
   outline: none;
   background-color: #007aff;
   border-radius: 10px;
-  color: white;
+  /* color: white; */
 }
 
-p {
-  font-size: 1rem;
-  font-weight: 900;
+
+.timer {
+  font-size: 6rem;
+  font-weight: 900
 }
 
 .scrambleWhole {
@@ -66,8 +67,9 @@ p {
 }
 
 .savedTimesWhole {
-  background-color: #1a1a1a;
-  width: 20vw;
+  /* background-color: #1a1a1a; */
+  width: calc(20vw-20px);
+  padding: 20px;
   height: 100vh;
   display: flex;
   align-items: start;
@@ -78,13 +80,34 @@ p {
 }
 
 .savedTimesList {
-  font-size: .9rem;
-  padding: 6px 20px;
-  margin: 0 30%;
-  width: 100%;
+  background-color: rgb(185, 185, 185);
+  font-size: 1rem;
+  padding: 1px 30px;
+  border-radius: 5px;
+  margin: 2px 0 0 0;
+  width: 12vw;
 }
 
 .savedTimesList:nth-child(odd) {
-  background-color: #000;
-  border-radius: 5px;
+  background-color: #7d7d7d;
+  /* border: 2px solid gray;
+  border-radius: 8px; */
+}
+
+
+button{
+  padding: 16px 32px;
+  border: none;
+  background-color: #111111;
+  color: white;
+  min-width: 250px;
+  border-radius: 15px;
+  margin: 4px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  transition: .2s;
+}
+button:hover{
+  scale: 1.019;
 }

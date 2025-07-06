@@ -2,20 +2,21 @@ import { useState, useRef, useEffect } from "react";
 import Scramble from "./components/Scramble";
 import SavedTimes from "./components/SavedTimes";
 import Average from "./components/Average";
+import Timer from "./components/Timer";
 
 function App() {
   const [savedTimes, setSavedTimes] = useState<number[]>([]);
   const [refresh, setRefresh] = useState(false);
-  const [timeElapsed, setTimeElapsed] = useState(0);
+  // const [timeElapsed, setTimeElapsed] = useState(0);
   const [phase, setPhase] = useState<"idle" | "inspecting" | "timing" | "done">(
     "idle"
   );
-  const [inspectionTimeLeft, setInspectionTimeLeft] = useState(15);
+  // const [inspectionTimeLeft, setInspectionTimeLeft] = useState(15);
 
-  const intervalRef = useRef<number | null>(null);
-  const startRef = useRef<number | null>(null);
-  const inspectionStartRef = useRef<number | null>(null);
-  const inspectionIntervalRef = useRef<number | null>(null);
+  // const intervalRef = useRef<number | null>(null);
+  // const startRef = useRef<number | null>(null);
+  // const inspectionStartRef = useRef<number | null>(null);
+  // const inspectionIntervalRef = useRef<number | null>(null);
 
   async function saveTime(time: number) {
     console.log("Sending time:", time);
@@ -37,106 +38,111 @@ function App() {
     }
   }
 
-  const handleStartTimer = () => {
-    if (inspectionIntervalRef.current)
-      clearInterval(inspectionIntervalRef.current);
+  console.log(
+    "%c😎",
+    "color: #04ff00; font-weight: bold; font-size: 100px; background-color: white;"
+  );
+  // const handleStartTimer = () => {
+  //   if (inspectionIntervalRef.current)
+  //     clearInterval(inspectionIntervalRef.current);
 
-    startRef.current = Date.now();
-    intervalRef.current = setInterval(() => {
-      if (startRef.current) {
-        setTimeElapsed(Date.now() - startRef.current);
-      }
-    }, 10); // 1ms is too granular
-    setPhase("timing");
-  };
+  //   startRef.current = Date.now();
+  //   intervalRef.current = setInterval(() => {
+  //     if (startRef.current) {
+  //       setTimeElapsed(Date.now() - startRef.current);
+  //     }
+  //   }, 10); // 1ms is too granular
+  //   setPhase("timing");
+  // };
 
-  const handleStopTimer = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    setPhase("done");
-    if (startRef.current) {
-      const finalTime = Date.now() - startRef.current;
-      setTimeElapsed(finalTime); // for display
-      saveTime(finalTime); // for backend
-    }
-  };
+  // const handleStopTimer = () => {
+  //   if (intervalRef.current) clearInterval(intervalRef.current);
+  //   setPhase("done");
+  //   if (startRef.current) {
+  //     const finalTime = Date.now() - startRef.current;
+  //     setTimeElapsed(finalTime); // for display
+  //     saveTime(finalTime); // for backend
+  //   }
+  // };
 
-  const reset = () => {
-    setTimeElapsed(0);
-    setInspectionTimeLeft(15);
-    setPhase("idle");
-  };
+  // const reset = () => {
+  //   setTimeElapsed(0);
+  //   setInspectionTimeLeft(15);
+  //   setPhase("idle");
+  // };
 
-  const handleKeyUp = (event: KeyboardEvent) => {
-    if (event.code !== "Space") return;
+  // const handleKeyUp = (event: KeyboardEvent) => {
+  //   if (event.code !== "Space") return;
 
-    if (phase === "idle") {
-      inspectionStartRef.current = Date.now();
-      setPhase("inspecting");
-      setInspectionTimeLeft(15);
+  //   if (phase === "idle") {
+  //     inspectionStartRef.current = Date.now();
+  //     setPhase("inspecting");
+  //     setInspectionTimeLeft(15);
 
-      inspectionIntervalRef.current = setInterval(() => {
-        if (!inspectionStartRef.current) return;
-        const elapsed = Math.floor(
-          (Date.now() - inspectionStartRef.current) / 1000
-        );
-        const remaining = 15 - elapsed;
-        setInspectionTimeLeft(remaining);
-        if (remaining <= 0) {
-          clearInterval(inspectionIntervalRef.current!);
-          setPhase("idle");
-        }
-      }, 1000);
-    } else if (phase === "inspecting") {
-      const inspectionDuration =
-        (Date.now() - (inspectionStartRef.current ?? 0)) / 1000;
-      if (inspectionDuration < 15) {
-        handleStartTimer();
-      } else {
-        setPhase("idle"); // Optional: mark as DNF instead
-      }
-    }
-  };
+  //     inspectionIntervalRef.current = setInterval(() => {
+  //       if (!inspectionStartRef.current) return;
+  //       const elapsed = Math.floor(
+  //         (Date.now() - inspectionStartRef.current) / 1000
+  //       );
+  //       const remaining = 15 - elapsed;
+  //       setInspectionTimeLeft(remaining);
+  //       if (remaining <= 0) {
+  //         clearInterval(inspectionIntervalRef.current!);
+  //         setPhase("idle");
+  //       }
+  //     }, 1000);
+  //   } else if (phase === "inspecting") {
+  //     const inspectionDuration =
+  //       (Date.now() - (inspectionStartRef.current ?? 0)) / 1000;
+  //     if (inspectionDuration < 15) {
+  //       handleStartTimer();
+  //     } else {
+  //       setPhase("idle"); // Optional: mark as DNF instead
+  //     }
+  //   }
+  // };
 
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.code !== "Space") return;
+  // const handleKeyDown = (event: KeyboardEvent) => {
+  //   if (event.code !== "Space") return;
 
-    if (phase === "timing") {
-      handleStopTimer();
-    } else if (phase === "done") {
-      reset();
-    }
-  };
+  //   if (phase === "timing") {
+  //     handleStopTimer();
+  //   } else if (phase === "done") {
+  //     reset();
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener("keyup", handleKeyUp);
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keyup", handleKeyUp);
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [phase]);
+  // useEffect(() => {
+  //   window.addEventListener("keyup", handleKeyUp);
+  //   window.addEventListener("keydown", handleKeyDown);
+  //   return () => {
+  //     window.removeEventListener("keyup", handleKeyUp);
+  //     window.removeEventListener("keydown", handleKeyDown);
+  //   };
+  // }, [phase]);
 
-  const seconds = Math.floor(timeElapsed / 1000);
-  const milliseconds = timeElapsed % 1000;
+  // const seconds = Math.floor(timeElapsed / 1000);
+  // const milliseconds = timeElapsed % 1000;
 
   return (
     <div className="wholeBody">
       <div className="timingAndSavedTimes">
         <div className="timingWhole">
           {phase === "done" && <Scramble />}
-          {phase === "idle" && <p>0:000</p>}
-          {phase === "timing" && <p>{seconds}</p>}
+          <Timer />
+          {/* {phase === "idle" && <p className="timer inspectionTimer">0:000</p>}
+          {phase === "timing" && <p className="timer mainTimer">{seconds}</p>}
           {phase === "done" && (
-            <p>
+            <p className="timer">
               {seconds}:{milliseconds.toString().padStart(3, "0")}
             </p>
           )}
-          {phase === "inspecting" && <p>{inspectionTimeLeft}</p>}
-          <Average times={savedTimes} />
+          {phase === "inspecting" && <p className="timer">{inspectionTimeLeft}</p>} */}
+          {/* <Average times={savedTimes} /> */}
         </div>
-        
+
         <div className="savedTimesWhole">
-          <SavedTimes refresh={refresh}/>
+          <SavedTimes refresh={refresh} />
         </div>
       </div>
     </div>
